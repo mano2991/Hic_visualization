@@ -1,0 +1,282 @@
+:root {
+  --bg: #f6f7fb;
+  --paper: #ffffff;
+  --ink: #111827;
+  --muted: #4b5563;
+  --line: #e5e7eb;
+  --accent: #0f766e;
+  --accent-2: #ef4444;
+  --shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, #dff4f2 0, transparent 40%),
+    radial-gradient(circle at 85% 20%, #ffe4e6 0, transparent 35%),
+    var(--bg);
+}
+
+.hero {
+  background: linear-gradient(110deg, #0f766e 0%, #134e4a 60%, #111827 100%);
+  color: #fff;
+  padding: 3rem 1.25rem;
+}
+
+.hero-inner,
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+h1 {
+  margin: 0.5rem 0;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 800px;
+  opacity: 0.92;
+}
+
+.container {
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.sample-grid,
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.8rem;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: #fff;
+}
+
+.card h3 {
+  margin: 0 0 0.6rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.35rem 0.55rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.stat {
+  font-size: 1.8rem;
+  margin: 0.2rem 0;
+  color: var(--accent-2);
+}
+
+.meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+select {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.3rem 0.5rem;
+  font-family: inherit;
+}
+
+input,
+button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.3rem 0.55rem;
+  font-family: inherit;
+}
+
+button {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.plot {
+  width: 100%;
+  min-height: 340px;
+}
+
+.iframe-wrap {
+  margin-top: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#higlassMount {
+  width: 100%;
+  min-height: 560px;
+  background: #f8fafc;
+}
+
+#juiceboxFrame {
+  width: 100%;
+  min-height: 560px;
+  border: 0;
+  background: #f8fafc;
+}
+
+/* Gene search input in controls bar */
+.controls input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.93rem;
+}
+
+.controls input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* IGV container */
+#igvContainer {
+  width: 100%;
+  min-height: 600px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.6rem 0 0.4rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* Half-and-half swatch for compartment A (dark) / B (light) */
+.swatch-split {
+  background: linear-gradient(90deg, var(--c1) 50%, var(--c2) 50%);
+  border-radius: 3px;
+}
+
+.hint {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.table-wrap {
+  margin-top: 0.8rem;
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88rem;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 0.4rem;
+  text-align: left;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .panel {
+    padding: 0.8rem;
+  }
+}
