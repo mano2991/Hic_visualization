@@ -7,6 +7,7 @@ This folder now includes a ready-to-run web portal for your Hi-C datasets.
 - `styles.css`: page style
 - `app.js`: data loading, summary stats, tables, compartment plot, and HiGlass embed URL wiring
 - Data folders:
+  - `HIC/` (`.hic`, `.cool`)
   - `Loop/` (`*_Loop.bed`)
   - `TAD/` (`*_TAD.bed`)
   - `Compartment/` (`*_Compartment.bedGraph`)

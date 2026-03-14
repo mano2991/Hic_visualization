@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Visualization — Menon et al. 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://igv.org/web/release/3.8.0/dist/igv.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://igv.org/web/release/3.8.0/dist/igv.min.js"></script>
+  <script src="app.js?v=111" defer></script>
+</head>
+<body>
+
+  <!-- ── TOPNAV ── -->
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <a href="https://venkateshlab.science/" target="_blank" rel="noopener" class="nav-lab-link">
+        <span class="nav-lab-icon">⬡</span>
+        <span class="nav-lab-name">Venkatesh Lab</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-tab">Home</a></li>
+        <li><a href="data.html" class="nav-tab active">Data Visualization</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── BREADCRUMB ── -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-inner">
+      <a href="https://venkateshlab.science/" target="_blank" rel="noopener">Venkatesh Lab</a>
+      <span class="bc-sep">›</span>
+      <a href="index.html">Menon et al. 2026</a>
+      <span class="bc-sep">›</span>
+      <span class="bc-current">Data Visualization</span>
+    </div>
+  </div>
+
+  <!-- ── PAGE HEADER ── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-header-title">Hi-C Data Visualization</h1>
+      <p class="page-header-sub">
+        Explore chromatin compartments, TADs, and loops across
+        <span class="sample-tag p0-tag">P0</span>
+        <span class="sample-tag adult-tag">Adult</span>
+        <span class="sample-tag injured-tag">Injured</span>
+        mouse motor cortex · Genome: mm10
+      </p>
+    </div>
+  </header>
+
+  <main class="data-main">
+
+    <!-- ── SUMMARY CARDS ── -->
+    <section class="data-section">
+      <h2 class="data-section-title">Dataset Summary</h2>
+      <div id="summaryCards" class="summary-grid"></div>
+    </section>
+
+    <!-- ── DOWNLOAD ── -->
+    <section class="data-section">
+      <h2 class="data-section-title">Download Data</h2>
+      <div class="download-grid">
+        <div class="dl-group">
+          <p class="dl-sample dl-p0">P0</p>
+          <div class="dl-links">
+            <a href="Loop/P0_Loop.bed" download class="dl-btn">Loops (.bed)</a>
+            <a href="TAD/P0_TAD.bed" download class="dl-btn">TADs (.bed)</a>
+            <a href="Compartment/P0_Compartment.bedGraph" download class="dl-btn">Compartments (.bedGraph)</a>
+          </div>
+        </div>
+        <div class="dl-group">
+          <p class="dl-sample dl-adult">Adult</p>
+          <div class="dl-links">
+            <a href="Loop/Adult_Loop.bed" download class="dl-btn">Loops (.bed)</a>
+            <a href="TAD/Adult_TAD.bed" download class="dl-btn">TADs (.bed)</a>
+            <a href="Compartment/Adult_Compartment.bedGraph" download class="dl-btn">Compartments (.bedGraph)</a>
+          </div>
+        </div>
+        <div class="dl-group">
+          <p class="dl-sample dl-injured">Injured</p>
+          <div class="dl-links">
+            <a href="Loop/Injured_Loop.bed" download class="dl-btn">Loops (.bed)</a>
+            <a href="TAD/Injured_TAD.bed" download class="dl-btn">TADs (.bed)</a>
+            <a href="Compartment/Injured_Compartment.bedGraph" download class="dl-btn">Compartments (.bedGraph)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GENOME BROWSER ── -->
+    <section class="data-section">
+      <div class="browser-head">
+        <div>
+          <h2 class="data-section-title" style="margin-bottom:0.2rem">Genome Browser</h2>
+          <p style="margin:0;font-size:0.88rem;color:var(--muted);">Use the track panel to show/hide individual tracks · Gene search uses MyGene.info (mm10)</p>
+        </div>
+        <div class="controls">
+          <input id="geneSearchInput" type="text" placeholder="Search gene — e.g. Nrn1, Gap43, Klf6 …" />
+          <button id="geneSearchBtn" type="button">Search</button>
+          <span id="geneSearchStatus" class="hint"></span>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span class="legend-item"><span class="swatch" style="background:#7B2D8B;"></span>P0 — Hi-C · TADs · Loops</span>
+        <span class="legend-item"><span class="swatch" style="background:#2E8B57;"></span>Adult — Hi-C · TADs · Loops</span>
+        <span class="legend-item"><span class="swatch" style="background:#C0392B;"></span>Injured — Hi-C · TADs · Loops</span>
+        <span class="legend-item"><span class="swatch swatch-split" style="--c1:#4A0E5C;--c2:#C9A0DC;"></span>Compartment A (dark) / B (light)</span>
+        <span class="legend-item" style="color:#6b7280;font-size:0.82rem;">Track order: Hi-C → Compartment → TADs (bars) → Loops (arcs)</span>
+      </div>
+
+      <div id="igvContainer"></div>
+      <p id="igvStatus" class="hint"></p>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col">
+          <p class="footer-label">Lab</p>
+          <a href="https://venkateshlab.science/" target="_blank" rel="noopener" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            venkateshlab.science
+          </a>
+          <a href="https://github.com/VenkateshLab" target="_blank" rel="noopener" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            VenkateshLab
+          </a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label">Website developed by</p>
+          <a href="https://github.com/mano2991" target="_blank" rel="noopener" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            mano2991
+          </a>
+          <a href="https://github.com/Anisha8597" target="_blank" rel="noopener" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            Anisha8597
+          </a>
+        </div>
+        <div class="footer-col footer-col-right">
+          <p class="footer-paper">Menon et al. 2026</p>
+          <p class="footer-muted">Hi-C Data Portal · Mouse Motor Cortex · mm10</p>
+          <p class="footer-muted">CSIR-CCMB, Hyderabad</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

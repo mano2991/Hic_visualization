@@ -3,55 +3,290 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hi-C Data Portal</title>
+  <title>Menon et al. 2026 — 3D Genome &amp; CNS Regeneration</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="https://igv.org/web/release/3.8.0/dist/igv.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-
-  <script src="https://igv.org/web/release/3.8.0/dist/igv.min.js"></script>
-  <script src="app.js?v=111" defer></script>
 </head>
 <body>
-  <header class="hero">
+
+  <!-- ── TOPNAV ── -->
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <a href="https://venkateshlab.science/" target="_blank" rel="noopener" class="nav-lab-link">
+        <span class="nav-lab-icon">⬡</span>
+        <span class="nav-lab-name">Venkatesh Lab</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-tab active">Home</a></li>
+        <li><a href="data.html" class="nav-tab">Data Visualization</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── BREADCRUMB ── -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-inner">
+      <a href="https://venkateshlab.science/" target="_blank" rel="noopener">Venkatesh Lab</a>
+      <span class="bc-sep">›</span>
+      <a href="index.html">Menon et al. 2026</a>
+      <span class="bc-sep">›</span>
+      <span class="bc-current">Home</span>
+    </div>
+  </div>
+
+  <!-- ── HERO ── -->
+  <header class="hero" id="home">
+    <div class="hero-bg-grid"></div>
     <div class="hero-inner">
-      <p class="eyebrow">Hi-C DATA PORTAL</p>
-      <h1>P0, Adult, and Injured Chromatin Architecture</h1>
-      <p class="subtitle">Explore chromatin architecture from Hi-C datasets.</p>
+      <p class="eyebrow">Preprint · 2026 · CSIR-CCMB, Hyderabad</p>
+      <h1 class="hero-title">
+        Rewiring of the three-dimensional genome encodes
+        <em>regenerative potential</em> in the adult central nervous system
+      </h1>
+
+      <p class="authors">
+        Anisha&nbsp;S.&nbsp;Menon<sup>1,2</sup>,
+        Manojkumar&nbsp;Kumaran<sup>1,†</sup>,
+        Faheem&nbsp;Farooq<sup>1,†</sup>,
+        Deepta&nbsp;S&nbsp;Beji<sup>1</sup>,
+        Dhruva&nbsp;Kumar&nbsp;Kesireddy<sup>1</sup>,
+        Yogesh&nbsp;Sahu<sup>1,2</sup>
+        and Ishwariya&nbsp;Venkatesh<sup>1</sup><sup>*</sup>
+      </p>
+
+      <p class="affiliations">
+        <sup>1</sup>CSIR – Centre for Cellular and Molecular Biology (CCMB), Hyderabad 500007, India&nbsp;&nbsp;
+        <sup>2</sup>Academy of Scientific and Innovative Research (AcSIR), Ghaziabad 201002, India
+      </p>
+      <p class="affiliations">
+        <sup>*</sup>Correspondence: <a href="mailto:ishwariya@ccmb.res.in" class="email-link">ishwariya@ccmb.res.in</a>
+        &nbsp;&nbsp;
+        <sup>†</sup>Equal contribution
+      </p>
+
+      <div class="hero-actions">
+        <a href="data.html" class="hero-btn hero-btn-primary">Explore Hi-C Data</a>
+        <a href="#abstract" class="hero-btn hero-btn-secondary">Read Abstract</a>
+      </div>
+
+      <div class="pill-row">
+        <span class="pill">Hi-C</span>
+        <span class="pill">3D Genome</span>
+        <span class="pill">CNS Regeneration</span>
+        <span class="pill">Motor Cortex</span>
+        <span class="pill">TADs &amp; Loops</span>
+        <span class="pill">Chromatin Compartments</span>
+        <span class="pill">Spinal Cord Injury</span>
+        <span class="pill">NR2F6</span>
+      </div>
     </div>
   </header>
 
-  <main class="container">
+  <main>
 
-    <section class="panel">
-      <h2>Feature Summary</h2>
-      <div id="summaryCards" class="summary-grid"></div>
-    </section>
-
-    <section class="panel">
-      <div class="section-head">
-        <h2>Genome Browser</h2>
-        <div class="controls">
-          <input id="geneSearchInput" type="text" placeholder="Search gene — e.g. Brca1, Tet2 …" />
-          <button id="geneSearchBtn" type="button">Search</button>
-          <span id="geneSearchStatus" class="hint"></span>
+    <!-- ── ABSTRACT ── -->
+    <section class="section-wrap" id="abstract">
+      <div class="section-inner two-col">
+        <div class="col-label">
+          <span class="section-tag">Abstract</span>
+        </div>
+        <div class="col-body">
+          <p class="abstract-text">
+            The failure of adult central nervous system neurons to regenerate after injury has been
+            attributed to transcriptional and epigenetic barriers, but whether three-dimensional genome
+            organization constitutes an independent regulatory layer encoding regenerative potential
+            remains unknown. Here we present the <strong>first genome-wide map of chromatin compartments,
+            topologically associating domains, and loops</strong> across postnatal development, adult
+            homeostasis, and spinal cord injury in the mouse motor cortex. Postnatal maturation
+            progressively consolidates a growth-restrictive three-dimensional architecture, and spinal cord
+            injury alone partially reverses this consolidation, re-engaging neonatal gene programs through
+            reorganized but functionally recapitulative architecture despite minimal transcriptional
+            activation. This reversion is directed rather than stochastic, preferentially targeting
+            pro-growth gene networks, and reveals a <strong>latent three-dimensional memory of
+            developmental growth states</strong> in the adult cortical genome. Strikingly, NR2F6, a
+            transcription factor that promotes corticospinal axon regeneration, extends this reversion
+            beyond the neonatal state toward an earlier embryonic chromatin configuration, a depth of
+            developmental plasticity that injury alone cannot reach. These findings establish
+            three-dimensional genome topology as a regulatory layer encoding regenerative potential in
+            adult cortical neurons, demonstrating that successful CNS regeneration requires accessing
+            embryonic rather than merely neonatal chromatin states, and <strong>reframing regenerative
+            failure as a topological problem with new therapeutic targets</strong>.
+          </p>
         </div>
       </div>
+    </section>
 
-      <div class="legend">
-        <span class="legend-item"><span class="swatch" style="background:#7B2D8B;"></span>P0 — Hi-C · TADs · Loops</span>
-        <span class="legend-item"><span class="swatch" style="background:#2E8B57;"></span>Adult — Hi-C · TADs · Loops</span>
-        <span class="legend-item"><span class="swatch" style="background:#C0392B;"></span>Injured — Hi-C · TADs · Loops</span>
-        <span class="legend-item"><span class="swatch swatch-split" style="--c1:#4A0E5C;--c2:#C9A0DC;"></span>Compartment A (dark) / B (light)</span>
-        <span class="legend-item" style="color:#6b7280;font-size:0.82rem;">Track order per sample: Hi-C → Compartment → TADs (bars) → Loops (arcs)</span>
+    <!-- ── KEY FINDINGS ── -->
+    <section class="section-wrap alt-bg" id="findings">
+      <div class="section-inner">
+        <h2 class="section-title">Key Findings</h2>
+        <p class="section-subtitle">Three principal discoveries from genome-wide Hi-C profiling of mouse motor cortex</p>
+
+        <div class="findings-grid">
+
+          <article class="finding-card finding-card-1">
+            <div class="finding-number">01</div>
+            <h3>Postnatal Consolidation of a Growth-Restrictive Genome</h3>
+            <p>
+              Postnatal maturation drives large-scale compartment reorganization, with
+              <strong>15.6% of the genome switching compartment identity</strong> as neurons
+              transition from growth-permissive to growth-restricted states, accompanied by
+              TAD boundary reinforcement and loop stabilization at pro-growth loci.
+            </p>
+            <div class="finding-tags">
+              <span>Compartments</span><span>TAD Boundaries</span><span>P0 vs Adult</span>
+            </div>
+          </article>
+
+          <article class="finding-card finding-card-2">
+            <div class="finding-number">02</div>
+            <h3>Injury Reveals a Latent 3D Memory of Neonatal Growth</h3>
+            <p>
+              Spinal cord injury <strong>partially and directedly reverses</strong> the
+              maturation-driven architectural changes — selectively dismantling boundaries
+              strengthened during maturation and re-engaging neonatal gene programs.
+              Adult cortical neurons retain a latent architectural memory of their neonatal
+              growth state.
+            </p>
+            <div class="finding-tags">
+              <span>Spinal Cord Injury</span><span>Loop Rewiring</span><span>Directed Reversion</span>
+            </div>
+          </article>
+
+          <article class="finding-card finding-card-3">
+            <div class="finding-number">03</div>
+            <h3>NR2F6 Pushes Architecture to an Embryonic State</h3>
+            <p>
+              NR2F6 does not simply amplify the injury response but pushes chromatin
+              architecture <strong>beyond the neonatal configuration toward an earlier
+              embryonic state</strong>, engaging non-overlapping loci with a stronger
+              re-activation bias and superior loop formation — a depth of plasticity
+              injury alone cannot reach.
+            </p>
+            <div class="finding-tags">
+              <span>NR2F6</span><span>Embryonic State</span><span>Therapeutic Target</span>
+            </div>
+          </article>
+
+        </div>
       </div>
+    </section>
 
-      <div id="igvContainer"></div>
-      <p id="igvStatus" class="hint"></p>
+    <!-- ── STUDY DESIGN ── -->
+    <section class="section-wrap" id="design">
+      <div class="section-inner">
+        <h2 class="section-title">Study Design</h2>
+        <p class="section-subtitle">In situ Hi-C across three conditions in mouse motor cortex</p>
+
+        <div class="design-timeline">
+          <div class="timeline-item tl-p0">
+            <div class="tl-card">
+              <p class="tl-label">P0</p>
+              <p class="tl-title">Postnatal Day 0</p>
+              <p class="tl-desc">Neurons have exited the cell cycle and established molecular identity yet retain active axonal growth — a growth-permissive chromatin state.</p>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item tl-adult">
+            <div class="tl-card">
+              <p class="tl-label">Adult</p>
+              <p class="tl-title">Uninjured Adult</p>
+              <p class="tl-desc">Mature motor cortex with fully consolidated growth-restrictive 3D chromatin architecture. Baseline for injury comparison.</p>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item tl-injured">
+            <div class="tl-card">
+              <p class="tl-label">Injured</p>
+              <p class="tl-title">7 days post-SCI</p>
+              <p class="tl-desc">Thoracic spinal cord injury at 7 days. Reveals how the adult genome responds architecturally to axonal injury challenge.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="methods-row">
+          <div class="method-badge">In situ Hi-C</div>
+          <div class="method-badge">Chromatin Crosslinking &amp; Restriction Digestion</div>
+          <div class="method-badge">Proximity Ligation</div>
+          <div class="method-badge">High-throughput Sequencing</div>
+          <div class="method-badge">Compartment Calling</div>
+          <div class="method-badge">TAD Detection</div>
+          <div class="method-badge">Loop Identification</div>
+        </div>
+
+        <div class="data-cta">
+          <p>Ready to explore the data?</p>
+          <a href="data.html" class="data-cta-btn">Open Data Visualization →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CITATION ── -->
+    <section class="section-wrap alt-bg" id="citation">
+      <div class="section-inner">
+        <h2 class="section-title">Citation</h2>
+        <div class="citation-box">
+          <p class="citation-text">
+            Menon AS, Kumaran M, Farooq F, Beji DS, Kesireddy DK, Sahu Y, Venkatesh I.
+            <em>Rewiring of the three-dimensional genome encodes regenerative potential in the adult central nervous system.</em>
+            Preprint, 2026.
+          </p>
+          <button class="copy-btn" onclick="
+            navigator.clipboard.writeText('Menon AS, Kumaran M, Farooq F, Beji DS, Kesireddy DK, Sahu Y, Venkatesh I. Rewiring of the three-dimensional genome encodes regenerative potential in the adult central nervous system. Preprint, 2026.')
+              .then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1800)})
+              .catch(()=>{})
+          ">Copy</button>
+        </div>
+
+        <div class="contact-row">
+          <p>For data or correspondence: <a href="mailto:ishwariya@ccmb.res.in">ishwariya@ccmb.res.in</a></p>
+          <p class="affil-full">
+            Venkatesh Lab · CSIR – Centre for Cellular and Molecular Biology (CCMB)<br>
+            Uppal Road, Hyderabad 500007, Telangana, India ·
+            <a href="https://venkateshlab.science/" target="_blank" rel="noopener">venkateshlab.science</a>
+          </p>
+        </div>
+      </div>
     </section>
 
   </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col">
+          <p class="footer-label">Lab</p>
+          <a href="https://venkateshlab.science/" target="_blank" rel="noopener" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            venkateshlab.science
+          </a>
+          <a href="https://github.com/VenkateshLab" target="_blank" rel="noopener" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            VenkateshLab
+          </a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label">Website developed by</p>
+          <a href="https://github.com/mano2991" target="_blank" rel="noopener" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            mano2991
+          </a>
+          <a href="https://github.com/Anisha8597" target="_blank" rel="noopener" class="footer-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            Anisha8597
+          </a>
+        </div>
+        <div class="footer-col footer-col-right">
+          <p class="footer-paper">Menon et al. 2026</p>
+          <p class="footer-muted">Hi-C Data Portal · Mouse Motor Cortex · mm10</p>
+          <p class="footer-muted">CSIR-CCMB, Hyderabad</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
